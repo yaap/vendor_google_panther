@@ -2,7 +2,7 @@
 service hal_flood_control_service vendor/bin/flood.control.hal
     class hal
     user root
-    group root
+    group root log
     interface aidl com.google.flood.IFloodService/default
     oneshot
     disabled
