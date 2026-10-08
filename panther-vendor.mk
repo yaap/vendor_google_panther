@@ -683,6 +683,8 @@ PRODUCT_COPY_FILES += \
     vendor/google/panther/proprietary/product/etc/sysconfig/pixel_experience_2022.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2022.xml \
     vendor/google/panther/proprietary/product/etc/sysconfig/pixel_experience_2022_midyear.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2022_midyear.xml \
     vendor/google/panther/proprietary/product/etc/sysconfig/preinstalled-packages-merged-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/preinstalled-packages-merged-product.xml \
+    vendor/google/panther/proprietary/recovery/system/etc/init/android.hardware.boot-service.default_recovery-pixel.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/android.hardware.boot-service.default_recovery-pixel.rc \
+    vendor/google/panther/proprietary/recovery/system/etc/init/android.hardware.health-service.gs201_recovery.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/android.hardware.health-service.gs201_recovery.rc \
     vendor/google/panther/proprietary/system_ext/etc/default-permissions/default-permissions-euiccpixel.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/default-permissions/default-permissions-euiccpixel.xml \
     vendor/google/panther/proprietary/system_ext/etc/init/init.gs_watchdogd.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.gs_watchdogd.rc \
     vendor/google/panther/proprietary/system_ext/etc/init/vendor.google.edgetpu_app_service@1.0-service.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/vendor.google.edgetpu_app_service@1.0-service.rc \
@@ -778,8 +780,12 @@ PRODUCT_PACKAGES += \
     imageprocessing_hal_framework_compatibility_matrix_system_ext \
     com.google.pixel.camera.services@1.0-service-google.xml \
     vendor.google.edgetpu_app_service@1.0-service.xml \
+    android.hardware.boot-service.default_recovery-pixel.xml \
+    android.hardware.health-service.gs201_recovery.xml \
     gs_watchdogd \
-    vendor.google.edgetpu_app_service@1.0-service
+    vendor.google.edgetpu_app_service@1.0-service \
+    android.hardware.boot-service.default_recovery-pixel \
+    android.hardware.health-service.gs201_recovery
 
 PRODUCT_PACKAGES += \
     product_priv-app_DMService_lib_arm_libdmengine_so \
@@ -945,14 +951,20 @@ PRODUCT_COPY_FILES += \
     vendor/google/panther/proprietary/vendor/etc/init/Exynos_C2.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/Exynos_C2.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.authsecret-service.citadel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.authsecret-service.citadel.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.bluetooth-service.bcmbtlinux.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.bluetooth-service.bcmbtlinux.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/android.hardware.boot-service.default-pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.boot-service.default-pixel.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.camera.provider@2.7-service-google-apex.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.camera.provider@2.7-service-google-apex.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.contexthub-service.generic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.contexthub-service.generic.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.graphics.allocator2-aidl-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.graphics.allocator2-aidl-service.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/android.hardware.health-service.gs201.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.health-service.gs201.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.neuralnetworks@service-darwinn-aidl.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.neuralnetworks@service-darwinn-aidl.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.oemlock-service.citadel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.oemlock-service.citadel.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/android.hardware.power-service.pixel-libperfmgr.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.power-service.pixel-libperfmgr.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.power.stats-service.pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.power.stats-service.pixel.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.secure_element@1.2-uicc-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.secure_element@1.2-uicc-service.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.security.keymint-service.citadel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.security.keymint-service.citadel.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/android.hardware.thermal-service.pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.thermal-service.pixel.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/android.hardware.usb-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.usb-service.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/android.hardware.usb.gadget-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.usb.gadget-service.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.vibrator-service.cs40l26.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.vibrator-service.cs40l26.rc \
     vendor/google/panther/proprietary/vendor/etc/init/android.hardware.weaver-service.citadel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.weaver-service.citadel.rc \
     vendor/google/panther/proprietary/vendor/etc/init/aocd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/aocd.rc \
@@ -991,6 +1003,7 @@ PRODUCT_COPY_FILES += \
     vendor/google/panther/proprietary/vendor/etc/init/libg3a_gabc.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/libg3a_gabc.rc \
     vendor/google/panther/proprietary/vendor/etc/init/libg3a_gaf.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/libg3a_gaf.rc \
     vendor/google/panther/proprietary/vendor/etc/init/libg3a_ghawb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/libg3a_ghawb.rc \
+    vendor/google/panther/proprietary/vendor/etc/init/pixel-thermal-symlinks.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/pixel-thermal-symlinks.rc \
     vendor/google/panther/proprietary/vendor/etc/init/pktrouter.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/pktrouter.rc \
     vendor/google/panther/proprietary/vendor/etc/init/rfsd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rfsd.rc \
     vendor/google/panther/proprietary/vendor/etc/init/rild_exynos.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild_exynos.rc \
@@ -2639,6 +2652,7 @@ PRODUCT_PACKAGES += \
     android.hardware.oemlock-impl.nos \
     android.hardware.power.stats-impl.gs-common \
     android.hardware.power.stats-impl.gs201 \
+    android.hardware.power.stats-impl.pixel \
     android.hardware.security.keymint-impl.nos \
     android.hardware.security.timestamp-V1-ndk \
     android.hardware.weaver-bridge.nos \
@@ -2681,6 +2695,9 @@ PRODUCT_PACKAGES += \
     libmodem_svc_proto_legacy_soong \
     libnos_citadeld_proxy \
     liboemcrypto \
+    libperfmgr \
+    libpixelatoms_defs \
+    libpixelhealth \
     libpixelstats \
     libpixelstatsflags \
     librtxproto_aidl-default \
@@ -2693,6 +2710,8 @@ PRODUCT_PACKAGES += \
     libvendor.goodix.hardware.biometrics.fingerprint@2.1 \
     libwlcproto_aidl-default \
     modem_log_dumper \
+    pixel_stateresidency_provider_aidl_interface-ndk \
+    pixelatoms-cpp \
     pixelstats_flags_c_lib \
     thermal-budget-interface-ndk \
     vendor.google.bluetooth_ext-V1-ndk \
@@ -2713,10 +2732,16 @@ PRODUCT_PACKAGES += \
     android.hardware.authsecret-service.citadel.xml \
     android.hardware.contexthub-service.generic.xml \
     android.hardware.gnss@2.1-service-brcm.xml \
+    android.hardware.health-service.gs201.xml \
     android.hardware.neuralnetworks@service-darwinn-aidl.xml \
     android.hardware.oemlock-service.citadel.xml \
+    android.hardware.power-service.pixel.xml \
+    android.hardware.power.stats-service.pixel.xml \
     android.hardware.security.keymint-service-v3.citadel.xml \
     android.hardware.security.sharesecret-service.citadel.xml \
+    android.hardware.thermal-service.pixel.xml \
+    android.hardware.usb-service.xml \
+    android.hardware.usb.gadget-service.xml \
     android.hardware.vibrator-service.cs40l26.xml \
     android.hardware.weaver-service.citadel.xml \
     fingerprint-goodix.xml \
@@ -2745,6 +2770,7 @@ PRODUCT_PACKAGES += \
     dump_fingerprint \
     dump_focaltech \
     dump_gsc \
+    dump_modem \
     dump_modemlog \
     dump_perf \
     dump_pixel_metrics \
@@ -2760,15 +2786,21 @@ PRODUCT_PACKAGES += \
     android.hardware.authsecret-service.citadel \
     android.hardware.biometrics.fingerprint-service.goodix \
     android.hardware.bluetooth-service.bcmbtlinux \
+    android.hardware.boot-service.default-pixel \
     android.hardware.composer.hwc3-service.pixel \
     android.hardware.contexthub-service.generic \
     android.hardware.gnss@2.1-service-brcm \
     android.hardware.graphics.allocator-V2-service \
+    android.hardware.health-service.gs201 \
     android.hardware.neuralnetworks@service-darwinn-aidl \
     android.hardware.oemlock-service.citadel \
+    android.hardware.power-service.pixel-libperfmgr \
     android.hardware.power.stats-service.pixel \
     android.hardware.secure_element@1.2-uicc-service \
     android.hardware.security.keymint-service.citadel \
+    android.hardware.thermal-service.pixel \
+    android.hardware.usb-service \
+    android.hardware.usb.gadget-service \
     android.hardware.vibrator-service.cs40l26 \
     android.hardware.weaver-service.citadel \
     battery_mitigation \
@@ -2797,9 +2829,11 @@ PRODUCT_PACKAGES += \
     init.radio \
     insmod \
     rfsd \
+    sendhint \
     shamp \
     shared_modem_platform \
     storage_init \
+    thermal_symlinks \
     trusty_metricsd \
     ufs_firmware_update \
     umfw_stat_tool \

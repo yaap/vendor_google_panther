@@ -757,6 +757,24 @@ prebuilt_etc_xml {
     system_ext_specific: true,
 }
 
+prebuilt_etc_xml {
+    name: "android.hardware.boot-service.default_recovery-pixel.xml",
+    owner: "google",
+    src: "proprietary/recovery/system/etc/vintf/manifest/android.hardware.boot-service.default_recovery-pixel.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    recovery: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.health-service.gs201_recovery.xml",
+    owner: "google",
+    src: "proprietary/recovery/system/etc/vintf/manifest/android.hardware.health-service.gs201_recovery.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    recovery: true,
+}
+
 cc_prebuilt_binary {
     name: "gs_watchdogd",
     owner: "google",
@@ -814,6 +832,71 @@ cc_prebuilt_binary {
     prefer: true,
     relative_install_path: "hw",
     system_ext_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.boot-service.default_recovery-pixel",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/recovery/system/bin/hw/android.hardware.boot-service.default_recovery-pixel",
+            ],
+            shared_libs: [
+                "liblog",
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
+                "libz",
+                "libtrusty",
+                "android.hardware.boot@1.1",
+                "android.hardware.boot-V1-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    recovery: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.health-service.gs201_recovery",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/recovery/system/bin/hw/android.hardware.health-service.gs201_recovery",
+            ],
+            shared_libs: [
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
+                "liblog",
+                "libutils",
+                "android.hardware.health-V5-ndk",
+                "libhidlbase",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    recovery: true,
 }
 
 install_symlink {
@@ -6540,6 +6623,38 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "android.hardware.power.stats-impl.pixel",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/android.hardware.power.stats-impl.pixel.so",
+            ],
+            shared_libs: [
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
+                "libhardware",
+                "liblog",
+                "libutils",
+                "pixel_stateresidency_provider_aidl_interface-ndk",
+                "android.hardware.power.stats-V2-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "android.hardware.security.keymint-impl.nos",
     owner: "google",
     strip: {
@@ -7796,6 +7911,93 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libperfmgr",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libperfmgr.so",
+            ],
+            shared_libs: [
+                "libbase",
+                "libcutils",
+                "libprocessgroup",
+                "libutils",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libpixelatoms_defs",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libpixelatoms_defs.so",
+            ],
+            shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libpixelhealth",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libpixelhealth.so",
+            ],
+            shared_libs: [
+                "android.frameworks.stats-V1-ndk",
+                "android.hardware.health-V5-ndk",
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
+                "libhidlbase",
+                "libpixelatoms_defs",
+                "libutils",
+                "libaconfig_storage_read_api_cc",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "libpixelstats",
     owner: "google",
     strip: {
@@ -8114,6 +8316,57 @@ cc_prebuilt_library_shared {
                 "libbase",
                 "liblog",
                 "modem_log_constants",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "pixel_stateresidency_provider_aidl_interface-ndk",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/pixel_stateresidency_provider_aidl_interface-ndk.so",
+            ],
+            shared_libs: [
+                "libbinder_ndk",
+                "android.hardware.power.stats-V2-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "pixelatoms-cpp",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/pixelatoms-cpp.so",
+            ],
+            shared_libs: [
+                "libprotobuf-cpp-lite-6.33.5-absl20260526",
                 "libc++",
                 "libc",
                 "libm",
@@ -8466,6 +8719,15 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
+    name: "android.hardware.health-service.gs201.xml",
+    owner: "google",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.health-service.gs201.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
     name: "android.hardware.neuralnetworks@service-darwinn-aidl.xml",
     owner: "google",
     src: "proprietary/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@service-darwinn-aidl.xml",
@@ -8484,6 +8746,24 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
+    name: "android.hardware.power-service.pixel.xml",
+    owner: "google",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.power-service.pixel.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.power.stats-service.pixel.xml",
+    owner: "google",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.power.stats-service.pixel.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
     name: "android.hardware.security.keymint-service-v3.citadel.xml",
     owner: "google",
     src: "proprietary/vendor/etc/vintf/manifest/android.hardware.security.keymint-service-v3.citadel.xml",
@@ -8496,6 +8776,33 @@ prebuilt_etc_xml {
     name: "android.hardware.security.sharesecret-service.citadel.xml",
     owner: "google",
     src: "proprietary/vendor/etc/vintf/manifest/android.hardware.security.sharesecret-service.citadel.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.thermal-service.pixel.xml",
+    owner: "google",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.thermal-service.pixel.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.usb-service.xml",
+    owner: "google",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.usb-service.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "android.hardware.usb.gadget-service.xml",
+    owner: "google",
+    src: "proprietary/vendor/etc/vintf/manifest/android.hardware.usb.gadget-service.xml",
     filename_from_src: true,
     sub_dir: "vintf/manifest",
     soc_specific: true,
@@ -8904,6 +9211,29 @@ sh_binary {
     src: "proprietary/vendor/bin/dump/dump_gsc.sh",
     filename: "dump_gsc.sh",
     sub_dir: "dump",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "dump_modem",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/dump/dump_modem",
+            ],
+            shared_libs: [
+                "libstd.dylib",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "dump",
     soc_specific: true,
 }
 
@@ -9318,6 +9648,39 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
+    name: "android.hardware.boot-service.default-pixel",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.boot-service.default-pixel",
+            ],
+            shared_libs: [
+                "liblog",
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
+                "libz",
+                "libtrusty",
+                "android.hardware.boot@1.1",
+                "android.hardware.boot-V1-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
     name: "android.hardware.composer.hwc3-service.pixel",
     owner: "google",
     target: {
@@ -9470,6 +9833,40 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
+    name: "android.hardware.health-service.gs201",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.health-service.gs201",
+            ],
+            shared_libs: [
+                "libpng",
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
+                "liblog",
+                "libutils",
+                "android.hardware.health-V5-ndk",
+                "libhidlbase",
+                "libpixelhealth",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
     name: "android.hardware.neuralnetworks@service-darwinn-aidl",
     owner: "google",
     target: {
@@ -9552,6 +9949,47 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
+    name: "android.hardware.power-service.pixel-libperfmgr",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.power-service.pixel-libperfmgr",
+            ],
+            shared_libs: [
+                "android.hardware.power-V7-ndk",
+                "android.hardware.thermal@2.0",
+                "android.hardware.thermal-V1-ndk",
+                "libbase",
+                "libcutils",
+                "liblog",
+                "libutils",
+                "libbinder_ndk",
+                "libperfmgr",
+                "libprocessgroup",
+                "libprotobuf-cpp-lite-6.33.5-absl20260526",
+                "libjsoncpp",
+                "pixel-power-ext-V2-ndk",
+                "android.frameworks.stats-V3-ndk",
+                "android.hardware.common.fmq-V1-ndk",
+                "libfmq",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
     name: "android.hardware.power.stats-service.pixel",
     owner: "google",
     target: {
@@ -9584,9 +10022,6 @@ cc_prebuilt_binary {
     prefer: true,
     relative_install_path: "hw",
     soc_specific: true,
-    required: [
-        "pixel_powerstats_xml",
-    ],
 }
 
 cc_prebuilt_binary {
@@ -9647,6 +10082,120 @@ cc_prebuilt_binary {
                 "libnos_citadeld_proxy",
                 "nos_app_keymaster",
                 "android.hardware.security.keymint-V3-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.thermal-service.pixel",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.thermal-service.pixel",
+            ],
+            shared_libs: [
+                "libbase",
+                "libcutils",
+                "libjsoncpp",
+                "libutils",
+                "libnl",
+                "libbinder_ndk",
+                "android.frameworks.stats-V3-ndk",
+                "android.hardware.power-V1-ndk",
+                "android.hardware.thermal-V3-ndk",
+                "thermal-budget-interface-ndk",
+                "pixel-power-ext-V2-ndk",
+                "pixelatoms-cpp",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.usb-service",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.usb-service",
+            ],
+            shared_libs: [
+                "android.hardware.usb-V4-ndk",
+                "libbase",
+                "libbinder",
+                "libhidlbase",
+                "liblog",
+                "libusbhost",
+                "libutils",
+                "libhardware",
+                "android.hardware.thermal@1.0",
+                "android.hardware.thermal@2.0",
+                "android.hardware.thermal-V1-ndk",
+                "android.hardware.usb.gadget@1.0",
+                "android.hardware.usb.gadget-V1-ndk",
+                "libcutils",
+                "android.frameworks.stats-V3-ndk",
+                "pixelatoms-cpp",
+                "libbinder_ndk",
+                "libprotobuf-cpp-lite-6.33.5-absl20260526",
+                "server_configurable_flags",
+                "libaconfig_storage_read_api_cc",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "android.hardware.usb.gadget-service",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.usb.gadget-service",
+            ],
+            shared_libs: [
+                "libbase",
+                "liblog",
+                "libutils",
+                "android.frameworks.stats-V1-ndk",
+                "android.hardware.usb.gadget-V1-ndk",
+                "libcutils",
+                "libbinder_ndk",
                 "libc++",
                 "libc",
                 "libm",
@@ -10463,6 +11012,37 @@ cc_prebuilt_binary {
 }
 
 cc_prebuilt_binary {
+    name: "sendhint",
+    owner: "google",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/sendhint",
+            ],
+            shared_libs: [
+                "android.hardware.power-V7-ndk",
+                "libbase",
+                "libcutils",
+                "liblog",
+                "libutils",
+                "libbinder_ndk",
+                "pixel-power-ext-V2-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
     name: "shamp",
     owner: "google",
     target: {
@@ -10531,6 +11111,14 @@ sh_binary {
     owner: "google",
     src: "proprietary/vendor/bin/storage_init.sh",
     filename: "storage_init.sh",
+    soc_specific: true,
+}
+
+sh_binary {
+    name: "thermal_symlinks",
+    owner: "google",
+    src: "proprietary/vendor/bin/thermal_symlinks",
+    filename: "thermal_symlinks",
     soc_specific: true,
 }
 
