@@ -6464,6 +6464,32 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "android.frameworks.stats-V3-ndk_vendor",
+    stem: "android.frameworks.stats-V3-ndk",
+    owner: "google",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/android.frameworks.stats-V3-ndk.so",
+            ],
+            shared_libs: [
+                "libbinder_ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
     name: "android.hardware.authsecret-impl.nos",
     owner: "google",
     strip: {
@@ -7933,7 +7959,7 @@ cc_prebuilt_library_shared {
                 "proprietary/vendor/lib64/libpixelstats.so",
             ],
             shared_libs: [
-                "android.frameworks.stats-V3-ndk",
+                "android.frameworks.stats-V3-ndk_vendor",
                 "libbase",
                 "libbinder_ndk",
                 "libcutils",
@@ -9898,7 +9924,7 @@ cc_prebuilt_binary {
                 "libprotobuf-cpp-lite-6.33.5-absl20260526",
                 "libjsoncpp",
                 "pixel-power-ext-V2-ndk",
-                "android.frameworks.stats-V3-ndk",
+                "android.frameworks.stats-V3-ndk_vendor",
                 "android.hardware.common.fmq-V1-ndk",
                 "libfmq",
                 "libc++",
@@ -10041,7 +10067,7 @@ cc_prebuilt_binary {
                 "libutils",
                 "libnl",
                 "libbinder_ndk",
-                "android.frameworks.stats-V3-ndk",
+                "android.frameworks.stats-V3-ndk_vendor",
                 "android.hardware.power-V1-ndk",
                 "android.hardware.thermal-V3-ndk",
                 "thermal-budget-interface-ndk",
@@ -10086,7 +10112,7 @@ cc_prebuilt_binary {
                 "android.hardware.usb.gadget@1.0",
                 "android.hardware.usb.gadget-V1-ndk",
                 "libcutils",
-                "android.frameworks.stats-V3-ndk",
+                "android.frameworks.stats-V3-ndk_vendor",
                 "pixelatoms-cpp",
                 "libbinder_ndk",
                 "libprotobuf-cpp-lite-6.33.5-absl20260526",

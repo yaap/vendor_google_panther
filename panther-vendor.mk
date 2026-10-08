@@ -2647,6 +2647,7 @@ PRODUCT_PACKAGES += \
     vendor.samsung_slsi.telephony.hardware.radioExternal@1.1 \
     PixelVibratorFlagsL26 \
     aconfig_gsc_flags_c_lib \
+    android.frameworks.stats-V3-ndk_vendor \
     android.hardware.authsecret-impl.nos \
     android.hardware.oemlock-impl.nos \
     android.hardware.power.stats-impl.gs-common \
