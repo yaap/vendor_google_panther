@@ -6465,7 +6465,6 @@ cc_prebuilt_library_shared {
 
 cc_prebuilt_library_shared {
     name: "android.frameworks.stats-V3-ndk_vendor",
-    stem: "android.frameworks.stats-V3-ndk",
     owner: "google",
     strip: {
         none: true,
@@ -6473,7 +6472,7 @@ cc_prebuilt_library_shared {
     target: {
         android_arm64: {
             srcs: [
-                "proprietary/vendor/lib64/android.frameworks.stats-V3-ndk.so",
+                "proprietary/vendor/lib64/android.frameworks.stats-V3-ndk_vendor.so",
             ],
             shared_libs: [
                 "libbinder_ndk",
