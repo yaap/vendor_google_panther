@@ -7702,27 +7702,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libgpuflag_aconfig_rust.dylib",
-    owner: "google",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libgpuflag_aconfig_rust.dylib.so",
-            ],
-            shared_libs: [
-                "libc",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
     name: "libgril_oem-google",
     owner: "google",
     strip: {
@@ -9158,29 +9137,6 @@ sh_binary {
 }
 
 cc_prebuilt_binary {
-    name: "dump_modem",
-    owner: "google",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/dump/dump_modem",
-            ],
-            shared_libs: [
-                "libstd.dylib",
-                "libc",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    relative_install_path: "dump",
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
     name: "dump_modemlog",
     owner: "google",
     target: {
@@ -9430,31 +9386,6 @@ cc_prebuilt_binary {
             ],
             shared_libs: [
                 "libbinder_ndk",
-                "libc",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    strip: {
-        none: true,
-    },
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_binary {
-    name: "gpuflag",
-    owner: "google",
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/bin/gpuflag",
-            ],
-            shared_libs: [
-                "libandroid_logger.dylib",
-                "librustutils.dylib",
-                "liblog_rust.dylib",
-                "libstd.dylib",
                 "libc",
             ],
         },
