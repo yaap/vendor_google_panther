@@ -2678,7 +2678,6 @@ PRODUCT_PACKAGES += \
     libalertv3 \
     libcodec2_soft_ddpdec \
     libcodec2_store_dolby \
-    libcommand_fds \
     libdarwinn_hal \
     libdeeptouch \
     libdrmresource \
