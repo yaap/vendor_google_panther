@@ -2647,14 +2647,12 @@ PRODUCT_PACKAGES += \
     vendor.samsung_slsi.telephony.hardware.radioExternal@1.1 \
     PixelVibratorFlagsL26 \
     aconfig_gsc_flags_c_lib \
-    android.frameworks.stats-V3-ndk \
     android.hardware.authsecret-impl.nos \
     android.hardware.oemlock-impl.nos \
     android.hardware.power.stats-impl.gs-common \
     android.hardware.power.stats-impl.gs201 \
     android.hardware.power.stats-impl.pixel \
     android.hardware.security.keymint-impl.nos \
-    android.hardware.security.timestamp-V1-ndk \
     android.hardware.weaver-bridge.nos \
     android.hardware.weaver-impl.nos \
     android.hardware.weaver2-impl.nos \
