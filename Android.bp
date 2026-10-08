@@ -8825,15 +8825,6 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
-    name: "manifest_mapper_framework.xml",
-    owner: "google",
-    src: "proprietary/vendor/etc/vintf/manifest/manifest_mapper_framework.xml",
-    filename_from_src: true,
-    sub_dir: "vintf/manifest",
-    soc_specific: true,
-}
-
-prebuilt_etc_xml {
     name: "manifest_radioext.xml",
     owner: "google",
     src: "proprietary/vendor/etc/vintf/manifest/manifest_radioext.xml",
