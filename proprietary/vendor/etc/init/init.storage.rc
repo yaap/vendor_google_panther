@@ -1,3 +1,8 @@
+service backup_ota_log /system_ext/bin/backup_ota_log.sh
+    user root
+    disabled
+    oneshot
+
 on init
     # Make foreground and background I/O priority different. none-to-rt was
     # introduced in kernel 5.14. promote-to-rt was introduced in kernel 6.5.
@@ -6,7 +11,7 @@ on init
     write /dev/blkio/blkio.prio.class none-to-rt
     write /dev/blkio/blkio.prio.class promote-to-rt
 
-on property:ro.build.type=userdebug
+on property:ro.debuggable=1
     write /dev/sys/block/bootdevice/pixel/enable_pixel_ufs_logging 1
     chown system /dev/sg3
 
@@ -17,13 +22,14 @@ on default_storage_mode
     write /dev/sys/fs/by-name/userdata/max_io_bytes 524288
     write /dev/sys/fs/by-name/userdata/min_hot_blocks 0
 
+    # Priority
+    write /dev/sys/fs/by-name/userdata/adjust_lock_priority 32
+    write /dev/sys/fs/by-name/userdata/critical_task_priority 100
+
     # Block
     write /dev/sys/block/by-name/rootdisk/queue/nr_requests 128
     write /dev/sys/block/by-name/rootdisk/queue/rq_affinity 2
     write /dev/sys/block/by-name/zoned_device/queue/rq_affinity 2
-
-    # UFS
-    write /dev/sys/block/bootdevice/clkgate_enable 1
 
 on init
     # Symlink /dev/sys/block/bootdevice
@@ -40,7 +46,6 @@ on init
     write /dev/sys/block/by-name/rootdisk/queue/nr_requests 256
 
     # UFS
-    write /dev/sys/block/bootdevice/clkgate_enable 0
     write /dev/sys/block/bootdevice/wb_on 0
     write /dev/sys/block/bootdevice/enable_wb_buf_flush 0
 
@@ -67,7 +72,14 @@ on property:sys.boot_completed=1
     chown system system /dev/sys/fs/by-name/userdata/peak_atomic_write
     chown system system /dev/sys/fs/by-name/userdata/revoked_atomic_block
 
+    write /dev/sys/block/by-name/rootdisk/queue/iostats 1
+    write /dev/sys/block/by-name/rootdisk/queue/read_ahead_kb 128
+    write /dev/sys/block/by-name/userdata/queue/read_ahead_kb 128
+
     trigger default_storage_mode
+
+on property:sys.shutdown.requested=*
+    start backup_ota_log
 
 on charger
     trigger default_storage_mode
@@ -76,13 +88,28 @@ on property:ro.boot.mode=charger && property:init.svc.vendor.charger=running
     trigger default_storage_mode
 
 on boot
-    # These settings must be applied during the 'on boot' stage.
-    # In Kernel 6.12, other sysfs writes in this stage can implicitly reset
-    # read_ahead_kb to 1024KB. Moving these here ensures they are applied
-    # AFTER those writes, guaranteeing our desired 128KB value and
-    # enabling iostats collection early.
-    write /dev/sys/block/by-name/rootdisk/queue/iostats 1
-    write /dev/sys/block/by-name/rootdisk/queue/read_ahead_kb 128
-    write /dev/sys/block/by-name/userdata/queue/read_ahead_kb 128
-
     mkdir /data/vendor/storage 0770 system system
+
+on init && property:ro.boot.hardware.platform=gs101
+    write /dev/sys/block/bootdevice/clkgate_enable 0
+
+on init && property:ro.boot.hardware.platform=gs201
+    write /dev/sys/block/bootdevice/clkgate_enable 0
+
+on init && property:ro.boot.hardware.platform=zuma
+    write /dev/sys/block/bootdevice/clkgate_enable 0
+
+on init && property:ro.boot.hardware.platform=zumapro
+    write /dev/sys/block/bootdevice/clkgate_enable 0
+
+on default_storage_mode && property:ro.boot.hardware.platform=gs101
+    write /dev/sys/block/bootdevice/clkgate_enable 1
+
+on default_storage_mode && property:ro.boot.hardware.platform=gs201
+    write /dev/sys/block/bootdevice/clkgate_enable 1
+
+on default_storage_mode && property:ro.boot.hardware.platform=zuma
+    write /dev/sys/block/bootdevice/clkgate_enable 1
+
+on default_storage_mode && property:ro.boot.hardware.platform=zumapro
+    write /dev/sys/block/bootdevice/clkgate_enable 1
