@@ -734,22 +734,23 @@ PRODUCT_PACKAGES += \
     libhbmsvmanager_jni \
     NowPlayingPrebuilt \
     VZWAPNLib \
+    AICorePrebuilt \
     AppDirectedSMSService \
     CarrierSettings \
     CarrierWifi \
     ConnMO \
     DCMO \
     DMService \
-    AICorePrebuilt \
     DeviceIntelligenceNetworkPrebuiltAstrea \
     DevicePersonalizationAiAiPrebuiltPixel2022 \
-    SettingsIntelligenceGooglePrebuilt \
     DiagMon \
     EuiccGoogle \
+    GoogleCamera \
     HotwordEnrollmentOKGoogleFUSIONPro \
     HotwordEnrollmentXGoogleFUSIONPro \
     OemDmTrigger \
     PixelCameraServices \
+    SettingsIntelligenceGooglePrebuilt \
     TetheringEntitlement \
     WfcActivation \
     OemRilHookService \

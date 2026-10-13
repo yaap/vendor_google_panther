@@ -238,6 +238,19 @@ android_app_import {
 }
 
 android_app_import {
+    name: "AICorePrebuilt",
+    owner: "google",
+    apk: "proprietary/product/priv-app/AICorePrebuilt/AICorePrebuilt.apk",
+    preprocessed: true,
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+    product_specific: true,
+}
+
+android_app_import {
     name: "AppDirectedSMSService",
     owner: "google",
     apk: "proprietary/product/priv-app/AppDirectedSMSService/AppDirectedSMSService.apk",
@@ -313,19 +326,6 @@ android_app_import {
 }
 
 android_app_import {
-    name: "AICorePrebuilt",
-    owner: "google",
-    apk: "proprietary/product/priv-app/AICorePrebuilt/AICorePrebuilt.apk",
-    preprocessed: true,
-    presigned: true,
-    dex_preopt: {
-        enabled: false,
-    },
-    privileged: true,
-    product_specific: true,
-}
-
-android_app_import {
     name: "DeviceIntelligenceNetworkPrebuiltAstrea",
     owner: "google",
     apk: "proprietary/product/priv-app/DeviceIntelligenceNetworkPrebuiltAstrea/DeviceIntelligenceNetworkPrebuiltAstrea.apk",
@@ -342,21 +342,9 @@ android_app_import {
     name: "DevicePersonalizationAiAiPrebuiltPixel2022",
     owner: "google",
     apk: "proprietary/product/priv-app/DevicePersonalizationAiAiPrebuiltPixel2022/DevicePersonalizationAiAiPrebuiltPixel2022.apk",
-    overrides: ["DevicePersonalizationPrebuiltPixel2020"],
-    preprocessed: true,
-    presigned: true,
-    dex_preopt: {
-        enabled: false,
-    },
-    privileged: true,
-    product_specific: true,
-}
-
-android_app_import {
-    name: "SettingsIntelligenceGooglePrebuilt",
-    owner: "google",
-    apk: "proprietary/product/priv-app/SettingsIntelligenceGooglePrebuilt/SettingsIntelligenceGooglePrebuilt.apk",
-    overrides: ["SettingsIntelligence"],
+    overrides: [
+        "DevicePersonalizationPrebuiltPixel2020",
+    ],
     preprocessed: true,
     presigned: true,
     dex_preopt: {
@@ -382,6 +370,26 @@ android_app_import {
     name: "EuiccGoogle",
     owner: "google",
     apk: "proprietary/product/priv-app/EuiccGoogle/EuiccGoogle.apk",
+    preprocessed: true,
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+    product_specific: true,
+}
+
+android_app_import {
+    name: "GoogleCamera",
+    owner: "google",
+    apk: "proprietary/product/priv-app/GoogleCamera/GoogleCamera.apk",
+    overrides: [
+        "Aperture",
+        "Camera",
+        "Camera2",
+        "GoogleCameraGo",
+        "GCamGOPrebuilt",
+    ],
     preprocessed: true,
     presigned: true,
     dex_preopt: {
@@ -433,6 +441,22 @@ android_app_import {
     name: "PixelCameraServices",
     owner: "google",
     apk: "proprietary/product/priv-app/PixelCameraServices/PixelCameraServices.apk",
+    preprocessed: true,
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+    product_specific: true,
+}
+
+android_app_import {
+    name: "SettingsIntelligenceGooglePrebuilt",
+    owner: "google",
+    apk: "proprietary/product/priv-app/SettingsIntelligenceGooglePrebuilt/SettingsIntelligenceGooglePrebuilt.apk",
+    overrides: [
+        "SettingsIntelligence",
+    ],
     preprocessed: true,
     presigned: true,
     dex_preopt: {
